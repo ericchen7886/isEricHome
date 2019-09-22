@@ -1,64 +1,47 @@
-import React, {Component,PureComponent} from 'react';
-import './App.css';
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state = (
-      {
-        list: [
-          {id:0 , text:'a'},
-          {id:1 , text:'b'},
-          {id:2 , text:'c'},
-          {id:3 , text:'d'},
-          {id:4 , text:'e'},
-          {id:5 , text:'f'},
-        ]
-      }
-    );
+import React, { PureComponent } from 'react'
+import Title from './component/Title'
+import Form from './component/Form'
+import Clist from './component/list'
+
+export default class App extends PureComponent {
+  constructor(){
+    super();
+    let list = [
+      {id:1 , item: 'eat1'},
+      {id:2 , item: 'eat2'},
+      {id:3 , item: 'eat3'},
+      {id:4 , item: 'eat4'},
+      {id:5 , item: 'eat5'},
+    ]
+
+    this.state= {
+      todos: list,
+      addIdx: list.length + 1
+    }
+
   }
 
-  reverse(){
-    this.setState(
-      {
-        list: this.state.list.reverse()
-      }
-    );
+  addItem(text){
+    this.setState({
+      todos: [...this.state.todos, {addIdx:this.state.addIdx , item: text}], 
+    });
   }
 
-  spilce = () => {
-    this.setState(
-      {
-        list: this.state.list.splice(1)
-      }
-    );
+  removeItem(id){
+     this.setState({
+       todos: this.state.todos.filter(
+         (todo) => todo.id!==id
+       )  
+    });
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div>
-        <button onClick={() => this.reverse(this)}>reverse</button>
-        <button onClick={this.spilce}>spilce</button>
-        <ol>
-          {this.state.list.map((item,idx) => {
-              return (
-                <Li 
-                  key={idx} text={item.text} keyText={item.id} 
-                />
-              );
-            }
-          )}
-        </ol>
+        <Title todos = {this.state.todos} />
+        <Form addItem = {(text) => this.addItem(text)} />
+        <Clist todos = {this.state.todos} removes = {(id) => this.removeItem(id)}/>
       </div>
-    );
+    )
   }
 }
-
-class Li extends PureComponent{
-  render(){
-    return(
-      <li> {this.props.text},{this.props.keyText}</li>
-    );
-  }
-}
-
-export default App;
