@@ -14,23 +14,25 @@ export default class list extends Component {
         this.state = ({
             todos: this.props.todos,
             PaperColor: '#FFAA33',
+            todosNumber:  Math.floor(12/this.props.todos.length),
         });
     }
 
     render(){
         return (
-            <SpacingGrid todos={this.state.todos} PaperColor={this.state.PaperColor}/>
+            <SpacingGrid todosNumber = {this.state.todosNumber} todos={this.state.todos} PaperColor={this.state.PaperColor}/>
         )
     }
 }
 
 function SpacingGrid(props) {
+  console.log('todosNumber',props.todosNumber)
   return (
     <Grid container spacing={3}>
       <Grid item xs={12}>
         <Grid container justify="center" spacing={5}>
           {props.todos.map((todo,idx) => (
-            <Grid key={todo.id} item xs={12} sm={2}>
+            <Grid key={todo.id} item xs={props.todosNumber}>
               <PaperItem title={todo.item} content = {todo.value} PaperColor={props.PaperColor}/>
             </Grid>
           ))}

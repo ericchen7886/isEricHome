@@ -13,7 +13,6 @@ export const PaperItem = (props) => {
 
     return (
         <div className={Style.root}>
-            {/* <Paper style={paperColor}> */}
             <Paper className={Style.title} style={paperColor}>
                 <div className={Style.content} > 
                     <h4 className={Style.textTitle}>

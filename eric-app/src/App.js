@@ -11,6 +11,7 @@ export default class App extends PureComponent {
       {id:3 , item: '總材積重' , value: '30'},
       {id:4 , item: '累計件數', value: '40'},
       {id:5 , item: '累計重量', value: '50'},
+      {id:6 , item: '累計重量', value: '50'},
     ]
 
     this.state= {
