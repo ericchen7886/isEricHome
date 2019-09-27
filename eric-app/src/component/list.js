@@ -13,18 +13,16 @@ const PaperItem = (props) => {
 
 
   return (
-      <div className={Style.root}>
           <Paper className={Style.title} style={backgroundColor}>
               <div className={Style.content} > 
-                  <h4 className={Style.name}>
-                  {title}
-                  </h4>
-                  <p className={Style.value}>
-                      {content}
-                  </p>
+                  <div className={Style.name}>
+                    {title}
+                  </div>
+                  <div className={Style.value}>
+                    {content}
+                  </div>
               </div>               
           </Paper>
-      </div>
   )
 }
 

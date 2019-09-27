@@ -17,7 +17,7 @@ export default class App extends PureComponent {
     this.state= {
       todos: todos,
       todoColor: '#FFAA33',
-      todosNeedBlock:  Math.floor(12/todos.length),
+      todosNeedBlock:  12/todos.length,
     }
 
   }

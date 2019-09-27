@@ -1,42 +1,36 @@
 .root {
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
 }
 
 .title {
-    /* color: white; */
-    /* margin-left: 6px; */
-    /* margin-bottom: 10px; */
-    padding: 1px 5px 1px 5px;
     z-index: 10;
     font-size: 1.17rem;
     font-weight: bold;
-    position: relative;
-    height: 70px;
+    position: absolute;
+    height: 80px;
     width: 140px;
-
-    /* width: fit-content; */
+    line-height: 40px;
 }
 
 .content {
     height: 100%;
 	width: 100%;
-    position: relative;
+    position: absolute ;
     z-index: 5;
-    /* padding: 24px 12px 6px 24px; */
     padding: auto;
     border:2px ;
     text-align:center;
-    /* padding-bottom: 45px */
 }
 
 .value {
     color: #fff;
     font-size: 25px;
-    margin: 0;
+    height: 50%;
+    padding-bottom: 1px; 
 }
 
 .name{
     color: #f4ece1;
     font-size: 16px;
-    margin-bottom: 5px;
+    height: 50%;
 }
