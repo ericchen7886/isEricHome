@@ -1,43 +1,48 @@
 import React, {Component} from 'react';
-import {PaperItem} from './PaperItem';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Grid, { GridSpacing } from '@material-ui/core/Grid';
-import FormLabel from '@material-ui/core/FormLabel';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 
-export default class list extends Component {
-    constructor(props){
-        super(props);
-        this.state = ({
-            todos: this.props.todos,
-            PaperColor: '#FFAA33',
-            todosNumber:  Math.floor(12/this.props.todos.length),
-        });
-    }
+const Style = require("./PaperList_style.module.css");
 
+const PaperItem = (props) => {
+  const { title, content, todoColor } = props;
+
+  const backgroundColor = {
+    backgroundColor: todoColor,
+  };
+
+
+  return (
+      <div className={Style.root}>
+          <Paper className={Style.title} style={backgroundColor}>
+              <div className={Style.content} > 
+                  <h4 className={Style.name}>
+                  {title}
+                  </h4>
+                  <p className={Style.value}>
+                      {content}
+                  </p>
+              </div>               
+          </Paper>
+      </div>
+  )
+}
+
+export default class list extends Component {
     render(){
         return (
-            <SpacingGrid todosNumber = {this.state.todosNumber} todos={this.state.todos} PaperColor={this.state.PaperColor}/>
+          <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Grid container justify="center" spacing={5}>
+              {this.props.todos.map((todo,idx) => (
+                <Grid key={todo.id} item xs={this.props.todosNeedBlock}>
+                  <PaperItem title={todo.item} content = {todo.value} todoColor={this.props.todoColor}/>
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </Grid>
         )
     }
 }
 
-function SpacingGrid(props) {
-  console.log('todosNumber',props.todosNumber)
-  return (
-    <Grid container spacing={3}>
-      <Grid item xs={12}>
-        <Grid container justify="center" spacing={5}>
-          {props.todos.map((todo,idx) => (
-            <Grid key={todo.id} item xs={props.todosNumber}>
-              <PaperItem title={todo.item} content = {todo.value} PaperColor={props.PaperColor}/>
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-    </Grid>
-  );
-}
